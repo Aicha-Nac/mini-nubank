@@ -1,4 +1,4 @@
- README.md — Mini Nubank
+ README — Mini Nubank
 
 Mini Nubank – Simulação de Conta Digital
 Visão Geral
@@ -146,23 +146,36 @@ Git & GitHub
 
 
 
- Estrutura do Projeto (Simplificada)
+ Estrutura do Projeto 
 miniNubank/
- ├── src/main/java
- │   ├── model
- │   │   ├── Cliente.java
- │   │   ├── Conta.java
- │   │   ├── Cartao.java
- │   │   ├── Transacao.java
- │   ├── repository
- │   │   ├── RepositorioConta.java
- │   │   ├── RepositorioCartao.java
- │   ├── service
- │   │   ├── Nubank.java
- │   └── Main.java
- ├── src/test/java
- │   └── ModelContaTest.java
- └── README.md
+ mini-nubank/
+│
+├── src/
+│   └── miniNubank/
+│       │
+│       ├── ModelConta.java          # Modelo da conta bancária
+│       ├── ModelCliente.java        # Modelo do cliente
+│       ├── Cartao.java              # Cartão vinculado à conta
+│       ├── Transacao.java           # Representa uma transação
+│       │
+│       ├── ContaRepositorio.java    # Repositório de contas
+│       ├── ClienteRepositorio.java  # Repositório de clientes
+│       ├── RepositorioCartao.java   # Repositório de cartões
+│       │
+│       ├── NubankBanco.java         # Lógica principal do banco
+│       ├── Principal.java           # Classe main (execução)
+│       │
+│       ├── Serializacao.java        # Salvamento e leitura de dados
+│       │
+│       ├── ModelContaTest.java      # Testes da conta (JUnit)
+│       └── TransacaoTest.java       # Testes de transação
+│
+├── .classpath
+├── .project
+├── .settings/
+│
+├── README.md
+└── .gitignore
 
 
  Funcionalidades Futuras (Stretch Goals)
