@@ -2,8 +2,18 @@ package miniNubank;
 
 import java.util.Map;
 import java.util.Scanner;
+/**
+ * Classe principal responsável pela execução do sistema.
+ */
+
 
 public class Principal {
+	
+	/**
+     * Método principal do sistema.
+     *
+     * @param args argumentos da linha de comando
+     */
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

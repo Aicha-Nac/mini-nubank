@@ -1,12 +1,20 @@
 package miniNubank;
 
 import java.io.Serializable;
+/**
+ * Representa um cartão bancário vinculado a uma conta.
+ */
 
 public class Cartao implements Serializable {
     private static final long serialVersionUID = 1L;
-
+    /**
+     * Número do cartão.
+     */
     private String numero;
     private String contaNumero;
+    /**
+     * Limite disponível do cartão.
+     */
     private double limite; // limite de crédito (opcional)
     private boolean ativo = true;
 

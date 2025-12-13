@@ -2,9 +2,18 @@ package miniNubank;
 
 import java.io.*;
 
-public class Serializacao {
+/**
+* Classe responsável pela persistência de dados
+* utilizando serialização de objetos.
+*/
 
+public class Serializacao {
+	
+	/**
+     * Salva os dados do banco em arquivo.
+     */
     private static final String ARQUIVO = "banco.dat";
+    
 
     public static void salvarBanco(NubankBanco banco) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ARQUIVO))) {

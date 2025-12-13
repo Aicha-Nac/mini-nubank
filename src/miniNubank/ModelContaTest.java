@@ -1,3 +1,8 @@
+/**
+ * Classe de testes unitários da ModelConta.
+ */
+
+
 package miniNubank;
 
 import org.junit.jupiter.api.Test;
@@ -13,6 +18,10 @@ public class ModelContaTest {
     void setUp() {
         conta = new ModelConta(1, 0.0);
     }
+    
+    /**
+     * Testa operação de depósito.
+     */
 
     @Test
     void testDeposito() {

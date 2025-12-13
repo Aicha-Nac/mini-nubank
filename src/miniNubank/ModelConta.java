@@ -3,13 +3,28 @@ package miniNubank;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * Representa uma conta bancária.
+ * Permite operações como depósito, saque e transferência.
+ */
 
 public class ModelConta implements Serializable {
     private static final long serialVersionUID = 1L;
-
+    
+    /**
+     * Número da conta.
+     */
     private String numero;    // ex "0001"
     private String clienteId; // id do dono
+    
+    /**
+     * Saldo atual da conta.
+     */
     private double saldo;
+    
+    /**
+     * Lista de transações realizadas na conta.
+     */
     private List<Transacao> transacoes = new ArrayList<>();
     private List<String> cartoes = new ArrayList<>(); // números de cartão vinculados
 
@@ -29,12 +44,22 @@ public class ModelConta implements Serializable {
     public double getSaldo() { return saldo; }
     public List<Transacao> getTransacoes() { return transacoes; }
     public List<String> getCartoes() { return cartoes; }
-
+    /**
+     * Realiza um depósito na conta.
+     *
+     * @param valor valor a ser depositado
+     */
     public void depositar(double valor) {
         if (valor <= 0) return;
         saldo += valor;
         adicionarTransacao(new Transacao("Depósito", valor, null));
     }
+    /**
+     * Realiza um saque da conta.
+     *
+     * @param valor valor a ser sacado
+     * @return true se o saque foi realizado com sucesso
+     */
 
     public boolean sacar(double valor) {
         if (valor <= 0) return false;
@@ -43,7 +68,13 @@ public class ModelConta implements Serializable {
         adicionarTransacao(new Transacao("Saque", valor, null));
         return true;
     }
-
+    /**
+     * Transfere um valor para outra conta.
+     *
+     * @param destino conta de destino
+     * @param valor valor a ser transferido
+     * @return true se a transferência foi realizada
+     */
     public boolean transferirPara(ModelConta destino, double valor) {
         if (destino == null) return false;
         if (valor <= 0) return false;

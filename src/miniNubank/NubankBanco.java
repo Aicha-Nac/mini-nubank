@@ -3,8 +3,14 @@ package miniNubank;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+/**
+ * Classe principal que gerencia clientes, contas e autenticação.
+ */
 
 public class NubankBanco implements Serializable {
+	/**
+     * Mapa de contas cadastradas no banco.
+     */
     private static final long serialVersionUID = 1L;
 
     private Map<String, ModelCliente> clientes = new HashMap<>();
@@ -42,7 +48,13 @@ public class NubankBanco implements Serializable {
     public ModelConta buscarConta(String numeroConta) {
         return contas.get(numeroConta);
     }
-
+    /**
+     * Realiza login do cliente.
+     *
+     * @param id identificador do cliente
+     * @param senha senha do cliente
+     * @return true se o login for válido
+     */
     // autenticação por id do cliente e senha
     public boolean autenticar(String clienteId, String senha) {
         ModelCliente c = buscarCliente(clienteId);

@@ -3,12 +3,27 @@ package miniNubank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+/**
+ * Representa uma transação bancária.
+ * Pode ser depósito, saque ou transferência.
+ */
 
 public class Transacao implements Serializable {
     private static final long serialVersionUID = 1L;
+    /**
+     * Tipo da transação.
+     */
 
     private String tipo; // Depósito, Saque, Transferência, Compra Cartão, Pagamento Fatura...
+    
+    /**
+     * Valor da transação.
+     */
     private double valor;
+    /**
+     * Data da transação.
+     */
+    
     private LocalDateTime dataHora;
     private String info; // texto extra (ex: conta destino, número do cartão)
 

@@ -1,14 +1,35 @@
 package miniNubank;
 
 import java.io.Serializable;
+/**
+ * Representa um cliente do banco digital.
+ * Contém informações pessoais e credenciais de acesso.
+ */
 
 public class ModelCliente implements Serializable {
     private static final long serialVersionUID = 1L;
-
+    /**
+     * Identificador único do cliente.
+     */
     private String id;
+    /**
+     * Nome completo do cliente.
+     */
     private String nome;
+    
+    /**
+     * CPF do cliente.
+     */
     private String cpf;
+    
+    /**
+     * Email do cliente.
+     */
     private String email;
+    
+    /**
+     * Senha usada para autenticação do cliente.
+     */
     private String senha;
 
     public ModelCliente(String id, String nome, String cpf, String email, String senha) {

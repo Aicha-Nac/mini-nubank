@@ -3,6 +3,9 @@ package miniNubank;
 
 	import static org.junit.jupiter.api.Assertions.*;
 	import org.junit.jupiter.api.Test;
+	/**
+	 * Classe de testes unitários da Transacao.
+	 */
 
 	public class TransacaoTest {
 
