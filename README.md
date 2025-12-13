@@ -1,109 +1,186 @@
+ README.md — Mini Nubank
 
-⸻
+Mini Nubank – Simulação de Conta Digital
+Visão Geral
+O projeto Mini Nubank é uma aplicação em Java que simula as funcionalidades básicas de uma conta digital, inspirada no modelo de bancos digitais como o Nubank.
+O sistema permite o gerenciamento de clientes, contas, cartões e transações, com foco em orientação a objetos, coleções, persistência, segurança simples, testes unitários e documentação.
+Este projeto foi desenvolvido como atividade acadêmica, seguindo rigorosamente as especificações propostas pelo professor.
 
-🏦 Mini Nubank – Sistema Bancário em Java
+Objetivos do Projeto
 
-Projeto acadêmico desenvolvido para simular as funcionalidades básicas de um banco digital, inspirado no Nubank.
-Todas as operações foram implementadas em Java, utilizando Orientação a Objetos, Map, listas, serialização e uma validação simples de login.
 
-⸻
+-Aplicar conceitos de Programação Orientada a Objetos (POO)
 
-🚀 Funcionalidades Implementadas
 
-👤 Clientes
-	•	Cadastro de cliente com:
-	•	ID
-	•	Nome
-	•	CPF
-	•	Email
-	•	Senha (para login simples)
+-Utilizar Collections (Map e List)
 
-💳 Contas
-	•	Criação de conta vinculada ao cliente
-	•	Operações básicas:
-	•	Depósito
-	•	Saque
-	•	Transferência entre contas
-	•	Consulta de saldo
-	•	Lista de cartões vinculados
 
-📜 Transações
-	•	Registro de toda transação realizada
-	•	Cada transação contém:
-	•	Tipo (depósito, saque, transferência)
-	•	Valor
-	•	Data e hora
-	•	Descrição
+-Implementar operações bancárias básicas
 
-📄 Extrato
-	•	Listagem completa das transações da conta
 
-🔐 Segurança
-	•	Sistema simples de login (ID + senha)
-	•	Somente após autenticação o usuário vê sua conta e extrato
+-Trabalhar com serialização de dados
 
-💾 Persistência
-	•	Salvamento automático do estado do banco usando serialização Java
-	•	Arquivo banco.dat armazenado localmente
-	•	Carregamento automático ao iniciar o programa
+
+-Implementar validação simples de login
+
+
+-Criar testes unitários com JUnit
+
+
+-Documentar o código com JavaDoc
+
+
+
+ Funcionalidades Implementadas
+ Cliente
+
+
+Cadastro de cliente com:
+
+
+ID
+
+
+Nome
+
+
+CPF
+
+
+Email
+
+
+Usuário e senha
+
+
+
+
+Conta Corrente
+
+
+Criação de contas vinculadas a clientes
+
+
+Armazenamento das contas em Map<ID, Conta>
+
+
+Operações:
+
+
+Depósito
+
+
+Saque
+
+
+Transferência entre contas
+
+
+
+
+Verificação de saldo
+
+
+🧾 Transações
+
+
+Registro de todas as operações
+
+
+Extrato bancário por conta utilizando List<Transacao>
+
+
+ Cartão
+
+
+Cartão vinculado a uma conta
+
+
+Registro de transações realizadas por cartão
+
+
+ Segurança (Simples)
+
+
+Login via ID + senha
+
+
+Validação antes do acesso às funcionalidades
+
+
+Apenas usuários autenticados acessam as contas
+
+
+ Persistência
+
+
+Salvamento e leitura dos dados utilizando serialização
+
+
+Dados preservados entre execuções do programa
+
+
+ Testes Unitários
+
+
+Testes implementados com JUnit
+
+
+Verificação das principais operações da conta (ex: depósito e saque)
+
+
+
+ Tecnologias Utilizadas
+
+
+Java
+
+
+Eclipse IDE
+
+
+JUnit 5
+
+
+Git & GitHub
+
+
+
+ Estrutura do Projeto (Simplificada)
 miniNubank/
-│
-├── ModelCliente.java
-├── ModelConta.java
-├── Transacao.java
-├── Cartao.java
-│
-├── NubankBanco.java              # Banco (Map<String, Conta>)
-├── Serializacao.java             # Persistência
-├── Principal.java                # Classe principal (login + menu)
-│
-└── banco.dat    
-#🛠️ Tecnologias Utilizadas
-	•	Java 17+
-	•	Programação Orientada a Objetos
-	•	Coleções Java (Map, List)
-	•	Serialização (ObjectOutputStream / ObjectInputStream)
-	•	Eclipse IDE
-	•	Git & GitHub
-Como Executar
-	1.	Clone o repositório:
-  git clone https://github.com/Aicha-Nac/mini-nubank.git
-  2.	Abra o projeto no Eclipse
-	3.	Execute a classe:
-  Principal.java
-  4.	Na primeira execução, o sistema:
-	•	Cria o banco
-	•	Cria um cliente padrão
-	•	Cria uma conta inicial
-	•	Salva tudo no arquivo banco.dat
-	5.	Depois disso, sempre que rodar:
-	•	O banco será carregado automaticamente
-	•	Você poderá fazer login com seu ID + senha
+ ├── src/main/java
+ │   ├── model
+ │   │   ├── Cliente.java
+ │   │   ├── Conta.java
+ │   │   ├── Cartao.java
+ │   │   ├── Transacao.java
+ │   ├── repository
+ │   │   ├── RepositorioConta.java
+ │   │   ├── RepositorioCartao.java
+ │   ├── service
+ │   │   ├── Nubank.java
+ │   └── Main.java
+ ├── src/test/java
+ │   └── ModelContaTest.java
+ └── README.md
 
-⸻
 
-🔑 Login de Exemplo
+ Funcionalidades Futuras (Stretch Goals)
 
-O programa cria inicialmente este usuário:
-	•	ID: 1
-	•	Senha: 1234
-	•	Nome: Aïcha
-	•	Email: aicha@email.com
-	•	Saldo inicial: 1000
 
-⸻
+Fatura de cartão
 
-📌 O que poderia ser adicionado futuramente?
-	•	Fatura e parcelamento
-	•	Limite de crédito com juros
-	•	Notificações
-	•	Interface gráfica (JavaFX ou Swing)
-	•	Login com múltiplos clientes (CRUD completo)
-	•	API REST (Spring Boot)
 
-⸻
+Parcelamento de compras
 
-📘 Licença
 
-Projeto acadêmico — uso livre para aprendizado.
-Arquivo gerado automaticamente
+Notificações simplificadas de transações
+
+
+
+ Autoras
+Aïcha Nacambo e Aline De Brito Guimaraes
+Projeto acadêmico – Curso de Tecnologia em Telematica
+
+
+ 
