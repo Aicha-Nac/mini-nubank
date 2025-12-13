@@ -4,33 +4,35 @@ import java.io.*;
 
 public class Serializacao {
 
-public static void salvarBanco(NubankBanco banco, String nomeArquivo) {
-try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nomeArquivo))) {
-oos.writeObject(banco);
-System.out.println("Banco salvo com sucesso!");
-} catch (Exception e) {
-System.out.println("Erro ao salvar: " + e.getMessage());
+    private static final String ARQUIVO = "banco.dat";
+
+    public static void salvarBanco(NubankBanco banco) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ARQUIVO))) {
+            oos.writeObject(banco);
+            System.out.println("[Serializacao] Banco salvo em " + ARQUIVO);
+        } catch (Exception e) {
+            System.out.println("[Serializacao] Erro ao salvar banco: " + e.getMessage());
+        }
+    }
+
+    public static NubankBanco carregarBanco() {
+        File f = new File(ARQUIVO);
+        if (!f.exists()) {
+            System.out.println("[Serializacao] Arquivo não encontrado. Criando novo banco vazio.");
+            return NubankBanco.novoBancoVazio();
+        }
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ARQUIVO))) {
+            Object o = ois.readObject();
+            if (o instanceof NubankBanco) {
+                System.out.println("[Serializacao] Banco carregado com sucesso.");
+                return (NubankBanco) o;
+            } else {
+                System.out.println("[Serializacao] Arquivo não contém NubankBanco válido.");
+                return NubankBanco.novoBancoVazio();
+            }
+        } catch (Exception e) {
+            System.out.println("[Serializacao] Erro ao carregar banco: " + e.getMessage());
+            return NubankBanco.novoBancoVazio();
+        }
+    }
 }
-}
-
-public static NubankBanco carregarBanco(String nomeArquivo) {
-try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nomeArquivo))) {
-NubankBanco banco = (NubankBanco) ois.readObject();
-System.out.println("Banco carregado com sucesso!");
-return banco;
-} catch (FileNotFoundException e) {
-System.out.println("Arquivo não encontrado, criando novo banco.");
-return new NubankBanco();
-} catch (Exception e) {
-System.out.println("Erro ao carregar: " + e.getMessage());
-return new NubankBanco();
-}
-}
-}
-
-
-
-
-
-
-

@@ -8,10 +8,10 @@ public class RepositorioCartao implements Serializable {
 	private static final long serialVersionUID=1l;
  
 
-	    private Map<Integer, Cartao> cartoes = new HashMap<>();
+	    private Map<String, Cartao> cartoes = new HashMap<>();
 
 	    public void salvar(Cartao cartao) {
-	        cartoes.put(cartao.getNumero(), cartao);
+	        cartoes.put(cartao.getNumero(),cartao);
 	    }
 
 	    public Cartao buscar(int numero) {

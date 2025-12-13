@@ -1,40 +1,33 @@
 package miniNubank;
 
-
-	import java.io.Serializable;
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-	public class Transacao implements Serializable {
-		private static final long serialVersionUID=1l;
- 
-	    private String tipo;
-	    private double valor;
-	    private LocalDateTime dataHora;
+public class Transacao implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-	    public Transacao(String tipo, double valor) {
-	        this.tipo = tipo;
-	        this.valor = valor;
-	        this.dataHora = LocalDateTime.now();
-	    }
+    private String tipo; // Depósito, Saque, Transferência, Compra Cartão, Pagamento Fatura...
+    private double valor;
+    private LocalDateTime dataHora;
+    private String info; // texto extra (ex: conta destino, número do cartão)
 
-	    public void Transacao1(String descricao2, double valor2) {
-			// TODO Auto-generated constructor stub
-		}
+    public Transacao(String tipo, double valor, String info) {
+        this.tipo = tipo;
+        this.valor = valor;
+        this.info = info;
+        this.dataHora = LocalDateTime.now();
+    }
 
-		public String gettipo() { return tipo; }
-	    public double getValor() { return valor; }
-	    public LocalDateTime getData() { return dataHora; }
-	    
-	    @Override
-	    public String toString() {
-		return "Transação{" +
-	    "tipo='" + tipo + '\'' +
-	    ", valor=" + valor +
-	    ", dataHora=" + dataHora +
-	    '}';
-	    }
-	    }
-	
+    public String getTipo() { return tipo; }
+    public double getValor() { return valor; }
+    public LocalDateTime getDataHora() { return dataHora; }
+    public String getInfo() { return info; }
 
-
-
+    @Override
+    public String toString() {
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return "[" + dataHora.format(f) + "] " + tipo + " - R$" + String.format("%.2f", valor)
+               + (info != null && !info.isEmpty() ? " (" + info + ")" : "");
+    }
+}

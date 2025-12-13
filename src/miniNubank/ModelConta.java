@@ -1,60 +1,79 @@
 package miniNubank;
 
-
-	import java.io.Serializable;
+import java.io.Serializable;
 import java.util.ArrayList;
-	import java.util.HashSet;
-	import java.util.List;
-	import java.util.Set;
+import java.util.List;
 
-	public class ModelConta implements Serializable {
-		private static final long serialVersionUID=1l;
- 
-	    private String numero;
-	    private String cliente;
-	    private double saldo;
+public class ModelConta implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-	    // List → histórico de transações
-	    private List<Transacao> transacoes = new ArrayList<>();
+    private String numero;    // ex "0001"
+    private String clienteId; // id do dono
+    private double saldo;
+    private List<Transacao> transacoes = new ArrayList<>();
+    private List<String> cartoes = new ArrayList<>(); // números de cartão vinculados
 
-	    // Set → cartões (não aceita duplicados)
-	    private Set<String> cartoes = new HashSet<>();
+    public ModelConta(String numero, String clienteId, double saldoInicial) {
+        this.numero = numero;
+        this.clienteId = clienteId;
+        this.saldo = saldoInicial;
+        this.transacoes.add(new Transacao("Abertura de conta", saldoInicial, null));
+    }
 
-	    public ModelConta(String numero, String cliente, double saldoInicial) {
-	        this.numero = numero;
-	        this.cliente = cliente;
-	        this.saldo = saldoInicial;
-	    }
-
-	    public String getNumero1() { return numero; }
-	    public String getCliente() { return cliente ; }
-	    public double getSaldo() { return saldo; }
-
-	    public List<Transacao> getTransacoes() { return transacoes; }
-	    public Set<String> getCartoes() { return cartoes; }
-
-	    public void depositar(double valor) {
-	        saldo += valor;
-	        transacoes.add(new Transacao("Depósito", valor));
-	    }
-
-	    public boolean sacar(double valor) {
-	        if (valor > saldo) return false;
-
-	        saldo -= valor;
-	        transacoes.add(new Transacao("Saque", -valor));
-	        return true;
-	    }
-
-	    public void adicionarCartao(String numeroCartao) {
-	        cartoes.add(numeroCartao); // SET evita duplicados
-	    }
-
-		public String getNumero() {
-			// TODO Auto-generated method stub
-			return null;
-		}
+    public ModelConta(int i, double d) {
+		// TODO Auto-generated constructor stub
 	}
 
+	public String getNumero() { return numero; }
+    public String getClienteId() { return clienteId; }
+    public double getSaldo() { return saldo; }
+    public List<Transacao> getTransacoes() { return transacoes; }
+    public List<String> getCartoes() { return cartoes; }
 
+    public void depositar(double valor) {
+        if (valor <= 0) return;
+        saldo += valor;
+        adicionarTransacao(new Transacao("Depósito", valor, null));
+    }
 
+    public boolean sacar(double valor) {
+        if (valor <= 0) return false;
+        if (saldo < valor) return false;
+        saldo -= valor;
+        adicionarTransacao(new Transacao("Saque", valor, null));
+        return true;
+    }
+
+    public boolean transferirPara(ModelConta destino, double valor) {
+        if (destino == null) return false;
+        if (valor <= 0) return false;
+        if (saldo < valor) return false;
+        saldo -= valor;
+        destino.saldo += valor;
+        adicionarTransacao(new Transacao("Transferência - saída", valor, "para conta " + destino.getNumero()));
+        destino.adicionarTransacao(new Transacao("Transferência - entrada", valor, "de conta " + this.getNumero()));
+        return true;
+    }
+
+    public void adicionarTransacao(Transacao t) {
+        transacoes.add(t);
+    }
+
+    public void vincularCartao(String numeroCartao) {
+        if (!cartoes.contains(numeroCartao)) cartoes.add(numeroCartao);
+    }
+
+    public void mostrarExtrato() {
+        System.out.println("\n--- Extrato da conta " + numero + " ---");
+        for (Transacao t : transacoes) {
+            System.out.println(t);
+        }
+        System.out.println("Saldo atual: R$" + String.format("%.2f", saldo));
+        System.out.println("-------------------------------\n");
+    }
+
+    @Override
+    public String toString() {
+        return "Conta{numero='" + numero + "', clienteId='" + clienteId + "', saldo=R$" + String.format("%.2f", saldo) + "}";
+    }
+}

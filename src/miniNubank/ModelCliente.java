@@ -1,50 +1,32 @@
 package miniNubank;
 
+import java.io.Serializable;
 
-	import java.io.Serializable;
-import java.util.UUID;
+public class ModelCliente implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-	public class ModelCliente implements Serializable {
-		private static final long serialVersionUID=1l;
- 
-	    private String id;
-	    private String nome;
-	    private String cpf;
-	    private String email;
+    private String id;
+    private String nome;
+    private String cpf;
+    private String email;
+    private String senha;
 
-	    public ModelCliente(String nome, String cpf, String email) {
-	        this.id = UUID.randomUUID().toString(); // gera id automático
-	        this.setNome(nome);
-	        this.cpf = cpf;
-	        this.setEmail(email);
-	    }
+    public ModelCliente(String id, String nome, String cpf, String email, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.senha = senha;
+    }
 
-	    // getters...
-	    public String getId1() { return id; }
-	    public String getCpf() { return cpf; }
-	    // ...
+    public String getId() { return id; }
+    public String getNome() { return nome; }
+    public String getCpf() { return cpf; }
+    public String getEmail() { return email; }
+    public String getSenha() { return senha; }
 
-		public String getId() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public String getNome() {
-			return nome;
-		}
-
-		public void setNome(String nome) {
-			this.nome = nome;
-		}
-
-		public String getEmail() {
-			return email;
-		}
-
-		public void setEmail(String email) {
-			this.email = email;
-		}
-	}
-
-
-
+    @Override
+    public String toString() {
+        return "Cliente{id='" + id + "', nome='" + nome + "', cpf='" + cpf + "', email='" + email + "'}";
+    }
+}
