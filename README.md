@@ -1,6 +1,6 @@
- README — Mini Nubank
+ README - Mini Nubank
 
-Mini Nubank – Simulação de Conta Digital
+Mini Nubank -Simulação de Conta Digital
 Visão Geral
 O projeto Mini Nubank é uma aplicação em Java que simula as funcionalidades básicas de uma conta digital, inspirada no modelo de bancos digitais como o Nubank.
 O sistema permite o gerenciamento de clientes, contas, cartões e transações, com foco em orientação a objetos, coleções, persistência, segurança simples, testes unitários e documentação.
@@ -17,8 +17,7 @@ Objetivos do Projeto
 
 -Implementar operações bancárias básicas
 
-
--Trabalhar com serialização de dados
+Trabalhar com serialização de dados
 
 
 -Implementar validação simples de login
@@ -37,12 +36,8 @@ Objetivos do Projeto
 
 Cadastro de cliente com:
 
-
 ID
-
-
 Nome
-
 
 CPF
 
@@ -147,11 +142,11 @@ Git & GitHub
 
 
  Estrutura do Projeto 
-miniNubank/
+mini-nubank/
  mini-nubank/
 │
 ├── src/
-│   └── miniNubank/
+│   └── mini-nubank/
 │       │
 │       ├── ModelConta.java          # Modelo da conta bancária
 │       ├── ModelCliente.java        # Modelo do cliente
@@ -191,9 +186,17 @@ Notificações simplificadas de transações
 
 
 
- Autoras
+ Autoras:
 Aïcha Nacambo e Aline De Brito Guimaraes
-Projeto acadêmico – Curso de Tecnologia em Telematica
+Projeto acadêmico – Curso de Tecnologia em Telemática
+Professor:Elmano Ramalho Cavalcanti
+Disciplina: Programação II
 
 
  
+
+
+
+
+Nome
+
