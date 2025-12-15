@@ -76,7 +76,7 @@ Transferência entre contas
 Verificação de saldo
 
 
-🧾 Transações
+Transações
 
 
 Registro de todas as operações
